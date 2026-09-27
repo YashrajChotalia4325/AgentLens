@@ -1,0 +1,48 @@
+# Runs the whole app: PostgreSQL + FastAPI backend + Next.js dashboard.
+#   docker compose up --build
+# Dashboard: http://localhost:3000   API docs: http://localhost:8000/docs
+#
+# Needs backend/.env with LLM_API_KEY (DATABASE_URL there is overridden below).
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: agentlens
+      POSTGRES_PASSWORD: agentlens
+      POSTGRES_DB: agentlens
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentlens"]
+      interval: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      # Inside Docker, "localhost" is the container itself. Other containers
+      # are reached by their service name, so the database lives at "db".
+      DATABASE_URL: postgresql://agentlens:agentlens@db:5432/agentlens
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    environment:
+      API_URL: http://backend:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

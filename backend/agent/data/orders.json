@@ -1,0 +1,63 @@
+[
+  {
+    "order_id": "1041",
+    "customer": "Asha",
+    "status": "delivered",
+    "order_date": "2026-09-02",
+    "delivered_date": "2026-09-08",
+    "shipping_method": "standard",
+    "items": [
+      {"name": "Wireless Headphones", "category": "electronics", "price": 79.99, "quantity": 1}
+    ],
+    "shipping_cost": 0.0
+  },
+  {
+    "order_id": "1042",
+    "customer": "Rahul",
+    "status": "shipped",
+    "order_date": "2026-09-20",
+    "estimated_delivery": "2026-09-27",
+    "shipping_method": "standard",
+    "tracking_number": "TRK-88213",
+    "items": [
+      {"name": "Cotton T-Shirt", "category": "clothing", "price": 15.00, "quantity": 2},
+      {"name": "Canvas Backpack", "category": "bags", "price": 34.50, "quantity": 1}
+    ],
+    "shipping_cost": 0.0
+  },
+  {
+    "order_id": "1043",
+    "customer": "Meera",
+    "status": "processing",
+    "order_date": "2026-09-24",
+    "shipping_method": "express",
+    "items": [
+      {"name": "Smartwatch", "category": "electronics", "price": 149.00, "quantity": 1}
+    ],
+    "shipping_cost": 12.99
+  },
+  {
+    "order_id": "1044",
+    "customer": "John",
+    "status": "cancelled",
+    "order_date": "2026-09-15",
+    "shipping_method": "standard",
+    "items": [
+      {"name": "Coffee Mug", "category": "home", "price": 9.99, "quantity": 3}
+    ],
+    "shipping_cost": 4.99
+  },
+  {
+    "order_id": "1045",
+    "customer": "Priya",
+    "status": "delivered",
+    "order_date": "2026-08-10",
+    "delivered_date": "2026-08-16",
+    "shipping_method": "express",
+    "items": [
+      {"name": "Bluetooth Speaker", "category": "electronics", "price": 45.00, "quantity": 1},
+      {"name": "USB-C Charger", "category": "electronics", "price": 19.99, "quantity": 2}
+    ],
+    "shipping_cost": 12.99
+  }
+]

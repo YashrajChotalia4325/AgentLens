@@ -1,0 +1,37 @@
+[
+  {
+    "id": "returns",
+    "title": "Return policy",
+    "text": "Most items can be returned within 30 days of delivery if they are unused and in the original packaging. Electronics (headphones, speakers, chargers, smartwatches) have a shorter 15-day return window. Opened software and gift cards cannot be returned. To start a return, go to Orders > Return Item."
+  },
+  {
+    "id": "refunds",
+    "title": "Refunds",
+    "text": "Refunds are issued to the original payment method within 5-7 business days after the returned item reaches our warehouse. Original shipping fees are not refunded, except when the item arrived damaged or we sent the wrong item."
+  },
+  {
+    "id": "shipping",
+    "title": "Shipping options",
+    "text": "Standard shipping takes 5-7 business days and costs $4.99. Standard shipping is free for orders over $50. Express shipping takes 2 business days and costs $12.99. We currently ship only within the United States and Canada."
+  },
+  {
+    "id": "cancellation",
+    "title": "Cancelling an order",
+    "text": "Orders can be cancelled within 2 hours of being placed, as long as they have not shipped yet. After an order has shipped it cannot be cancelled, but it can be returned once delivered."
+  },
+  {
+    "id": "warranty",
+    "title": "Warranty",
+    "text": "All electronics come with a 1-year limited warranty covering manufacturing defects. The warranty does not cover accidental damage, water damage or normal wear. Warranty claims need the order ID and a photo of the problem."
+  },
+  {
+    "id": "damaged",
+    "title": "Damaged or wrong items",
+    "text": "If an item arrives damaged or you received the wrong item, contact support within 7 days of delivery with a photo. We will send a free replacement or give a full refund including shipping fees."
+  },
+  {
+    "id": "payment",
+    "title": "Payment methods",
+    "text": "We accept Visa, Mastercard, American Express, PayPal and store gift cards. We do not accept cash on delivery or cryptocurrency."
+  }
+]

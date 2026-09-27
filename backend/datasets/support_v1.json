@@ -1,0 +1,134 @@
+[
+  {
+    "id": "order-status-shipped",
+    "category": "orders",
+    "input": "Where is my order 1042?",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain": ["TRK-88213"],
+      "must_contain_any": ["shipped", "on its way", "in transit"]
+    }
+  },
+  {
+    "id": "order-status-processing",
+    "category": "orders",
+    "input": "Has order 1043 shipped yet?",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain_any": ["processing", "not yet", "hasn't shipped", "has not shipped", "not shipped"]
+    }
+  },
+  {
+    "id": "order-status-cancelled",
+    "category": "orders",
+    "input": "What's happening with order 1044?",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain_any": ["cancelled", "canceled"]
+    }
+  },
+  {
+    "id": "order-not-found",
+    "category": "orders",
+    "input": "Can you check order 9999 for me?",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain_any": ["not found", "couldn't find", "could not find", "unable to find", "doesn't exist", "does not exist", "no order"]
+    }
+  },
+  {
+    "id": "order-missing-id",
+    "category": "orders",
+    "input": "Where is my order?",
+    "expected": {
+      "must_not_call_tools": ["lookup_order"],
+      "must_contain_any": ["order id", "order number", "order #"]
+    },
+    "budget": {"max_steps": 2}
+  },
+  {
+    "id": "order-total",
+    "category": "orders",
+    "input": "What was the total for order 1042, including shipping?",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain": ["64.5"]
+    }
+  },
+  {
+    "id": "cancel-shipped-order",
+    "category": "orders",
+    "input": "I want to cancel order 1042.",
+    "expected": {
+      "must_call_tools": ["lookup_order"],
+      "must_contain_any": ["already shipped", "has shipped", "cannot be cancelled", "can't be cancelled", "cannot be canceled", "can't be canceled", "can't cancel", "cannot cancel"]
+    }
+  },
+  {
+    "id": "return-electronics-window",
+    "category": "policy",
+    "input": "I bought headphones 20 days ago. Can I still return them?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain": ["15"],
+      "must_contain_any": ["cannot", "can't", "unfortunately", "not eligible", "no longer", "past", "outside", "expired"]
+    }
+  },
+  {
+    "id": "return-order-1041",
+    "category": "policy",
+    "input": "Can I return the headphones from order 1041?",
+    "expected": {
+      "must_call_tools": ["lookup_order", "search_knowledge_base"],
+      "must_contain": ["15"],
+      "must_contain_any": ["cannot", "can't", "unfortunately", "not eligible", "no longer", "past", "outside", "expired"]
+    }
+  },
+  {
+    "id": "express-shipping",
+    "category": "policy",
+    "input": "How much is express shipping and how long does it take?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain": ["12.99"],
+      "must_contain_any": ["2 business days", "two business days", "2 days"]
+    }
+  },
+  {
+    "id": "free-shipping-threshold",
+    "category": "policy",
+    "input": "Will I get free shipping on a $60 order?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain": ["50"],
+      "must_contain_any": ["yes", "free"]
+    }
+  },
+  {
+    "id": "refund-timing",
+    "category": "policy",
+    "input": "How long does it take to get my refund?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain_any": ["5-7", "5 to 7", "5–7", "five to seven"]
+    }
+  },
+  {
+    "id": "international-shipping",
+    "category": "policy",
+    "input": "Do you ship to the UK?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain_any": ["united states and canada", "us and canada", "u.s. and canada", "don't ship", "do not ship", "only ship"]
+    }
+  },
+  {
+    "id": "crypto-payment",
+    "category": "policy",
+    "input": "Can I pay with Bitcoin?",
+    "expected": {
+      "must_call_tools": ["search_knowledge_base"],
+      "must_contain_any": ["not accept", "don't accept", "doesn't accept", "does not accept", "no crypto", "not supported"]
+    }
+  }
+]
