@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
@@ -88,7 +88,9 @@ def get_run(run_id: int, session=Depends(get_session)):
 
 
 class NewRunRequest(BaseModel):
-    input: str
+    # A cap on question length: a support question never needs more, and it stops
+    # someone pasting a whole book into the public demo to burn tokens.
+    input: str = Field(max_length=500)
     version: str = "v1"
     use_judge: bool = True
 

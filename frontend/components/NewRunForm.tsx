@@ -13,6 +13,7 @@ export default function NewRunForm({ versions }: { versions: { version: string; 
         name="input"
         rows={2}
         required
+        maxLength={500}
         placeholder="e.g. Can I return the headphones from order 1041?"
         className="w-full rounded-md border border-line bg-page p-2 text-sm"
       />

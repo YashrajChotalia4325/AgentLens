@@ -1,0 +1,11 @@
+# Files never uploaded when deploying from this folder with the Vercel CLI.
+**/.env*
+**/.venv
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+**/*.db
+**/.vercel
+docs
+.claude

@@ -4,6 +4,12 @@ import { notFound } from "next/navigation";
 
 export const API_URL = process.env.API_URL ?? "http://localhost:8000";
 
+// When deployed, the backend only answers requests carrying this shared secret.
+// It has no NEXT_PUBLIC_ prefix, so it stays on the server and never reaches the browser.
+export function authHeaders(): Record<string, string> {
+  return process.env.API_TOKEN ? { Authorization: `Bearer ${process.env.API_TOKEN}` } : {};
+}
+
 export type EvalScores = Record<string, { score: number; passed: boolean }>;
 
 export type RunSummary = {
@@ -95,7 +101,7 @@ export type Stats = {
 
 async function get<T>(path: string): Promise<T> {
   // no-store: always ask the API, never reuse an old response.
-  const res = await fetch(`${API_URL}${path}`, { cache: "no-store" });
+  const res = await fetch(`${API_URL}${path}`, { cache: "no-store", headers: authHeaders() });
   if (res.status === 404) notFound();
   if (!res.ok) throw new Error(`API ${path} returned ${res.status}`);
   return res.json();

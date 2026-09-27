@@ -11,3 +11,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://agentlens:agentlens@local
 
 # The model that grades answers in the LLM-as-a-judge evaluator.
 JUDGE_MODEL = os.getenv("JUDGE_MODEL", "openai/gpt-oss-120b")
+
+# Shared secret between the dashboard and this API. Leave it unset locally.
+# When deployed, set the same value on both, so only the dashboard can call the API.
+API_TOKEN = os.getenv("API_TOKEN")

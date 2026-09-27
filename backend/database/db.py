@@ -12,7 +12,14 @@ def _normalize_url(url):
     return url
 
 
-engine = create_engine(_normalize_url(DATABASE_URL), pool_pre_ping=True)
+def _connect_args(url):
+    # Neon's pooled URLs ("-pooler" in the host) go through PgBouncer, which can
+    # hand each query to a different server connection. psycopg's automatic
+    # prepared statements assume the same connection, so we turn them off.
+    return {"prepare_threshold": None} if url.startswith("postgresql") else {}
+
+
+engine = create_engine(_normalize_url(DATABASE_URL), pool_pre_ping=True, connect_args=_connect_args(DATABASE_URL))
 SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
 
 
